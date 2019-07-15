@@ -1,0 +1,34 @@
+{
+    "name": "tigrov/yii2-email-reply",
+    "description": "Email reply - passes reply messages to predefined objects for Yii2.",
+    "keywords": ["email", "reply", "yii2"],
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "source": "https://github.com/tigrov/yii2-email-reply"
+    },
+    "authors": [
+        {
+            "name": "Sergei Tigrov",
+            "email": "rrr-r@ya.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "tigrov/email-reply": "~1.0"
+    },
+    "suggest": {
+        "willdurand/email-reply-parser": "To parse content from email messages."
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "tigrov\\yii2\\emailReply\\": "src/"
+        }
+    }
+}
