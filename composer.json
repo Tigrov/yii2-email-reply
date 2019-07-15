@@ -28,7 +28,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "tigrov\\yii2\\emailReply\\": "src/"
+            "tigrov\\yii2\\emailReply\\": ""
         }
     }
 }
