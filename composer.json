@@ -1,6 +1,6 @@
 {
     "name": "tigrov/yii2-email-reply",
-    "description": "Email reply - passes reply messages to predefined objects for Yii2.",
+    "description": "Email Reply for Yii2 - passes reply messages to predefined objects.",
     "keywords": ["email", "reply", "yii2"],
     "type": "library",
     "license": "MIT",
