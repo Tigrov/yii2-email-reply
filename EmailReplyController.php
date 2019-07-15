@@ -20,10 +20,13 @@ class EmailReplyController extends Controller
 {
     public $defaultAction = 'read';
 
+    /** @var string \Yii::$app->mailer */
+    public $mailer = 'mailer';
+
     public function actionRead()
     {
         /** @var \Swift_SmtpTransport $transport */
-        $transport = \Yii::$app->mailer->transport;
+        $transport = \Yii::$app->get($this->mailer)->transport;
 
         $server = new Server($transport->getHost(), $transport->getPort());
         $connection = $server->authenticate($transport->getUsername(), $transport->getPassword());
