@@ -23,13 +23,20 @@ class EmailReplyController extends Controller
     /** @var string \Yii::$app->mailer */
     public $mailer = 'mailer';
 
+    public $host;
+
+    public $port = 993;
+
+    public $flags = '/imap/ssl/validate-cert';
+
+    public $username;
+
+    public $password;
+
     public function actionRead()
     {
-        /** @var \Swift_SmtpTransport $transport */
-        $transport = \Yii::$app->get($this->mailer)->transport;
-
-        $server = new Server($transport->getHost(), $transport->getPort());
-        $connection = $server->authenticate($transport->getUsername(), $transport->getPassword());
+        $server = $this->getServer();
+        $connection = $this->getConnection($server);
 
         $mailboxModels = Reader::getMailboxModels($connection);
         $messages = Reader::getIterator($mailboxModels);
@@ -39,5 +46,21 @@ class EmailReplyController extends Controller
         $emailReply->read($messages);
 
         $connection->expunge();
+    }
+
+    public function getServer()
+    {
+        /** @var \Swift_SmtpTransport $transport */
+        $transport = \Yii::$app->get($this->mailer)->transport;
+
+        return new Server($this->host ?: $transport->getHost(), $this->port ?: $transport->getPort(), $this->flags);
+    }
+
+    public function getConnection($server)
+    {
+        /** @var \Swift_SmtpTransport $transport */
+        $transport = \Yii::$app->get($this->mailer)->transport;
+
+        return $server->authenticate($this->username ?: $transport->getUsername(), $this->password ?: $transport->getPassword());
     }
 }
