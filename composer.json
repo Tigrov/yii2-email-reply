@@ -2,7 +2,7 @@
     "name": "tigrov/yii2-email-reply",
     "description": "Email Reply for Yii2 - passes reply messages to predefined objects.",
     "keywords": ["email", "reply", "yii2"],
-    "type": "library",
+    "type": "yii2-extension",
     "license": "MIT",
     "support": {
         "source": "https://github.com/tigrov/yii2-email-reply"
